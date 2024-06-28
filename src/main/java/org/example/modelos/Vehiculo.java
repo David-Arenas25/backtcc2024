@@ -1,8 +1,18 @@
 package org.example.modelos;
 
+import org.example.helpers.mensajes.MensajesVehiculo;
+import org.example.helpers.validaciones.VehiculoValidacion;
+
 import java.time.LocalDate;
 
+import static org.example.helpers.mensajes.MensajesVehiculo.ID_VEHICULO_ERRONEO;
+import static org.example.helpers.mensajes.MensajesVehiculo.MARCA_VEHICULO_ERRONEO;
+
 public class Vehiculo {
+
+    //Inyectando una dependencia de la clase vehiculo validacion
+
+    private VehiculoValidacion vehiculoValidacion= new VehiculoValidacion();
 
     //id
     private Integer id; //solo numeros positivos
@@ -66,7 +76,17 @@ public class Vehiculo {
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+
+        try {
+            if (this.vehiculoValidacion.validar(MARCA_VEHICULO_ERRONEO.getRegex(), marca)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.MARCA_VEHICULO_ERRONEO+e.getMessage());
+
+        }
     }
 
     public LocalDate getModelo() {
