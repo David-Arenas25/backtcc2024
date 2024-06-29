@@ -110,7 +110,7 @@ public class Vehiculo {
 
     public void setKilometraje(Double kilometraje) {
         try {
-            if (this.vehiculoValidacion.validarNumero(KILOMETRAJE_VEHICULO_ERRONEO.getRegex(), kilometraje)) {
+            if (this.vehiculoValidacion.validar(KILOMETRAJE_VEHICULO_ERRONEO.getRegex(), String.valueOf(kilometraje))) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -162,7 +162,7 @@ public class Vehiculo {
 
     public void setTipo(String tipo) {
         try {
-            if (this.vehiculoValidacion.validar(TIPO_VEHICULO_ERRONEO.getRegex(), descripcion)) {
+            if (this.vehiculoValidacion.validar(TIPO_VEHICULO_ERRONEO.getRegex(), tipo)) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -174,8 +174,12 @@ public class Vehiculo {
     }
 
     public Integer getAutonomia() {
+        return autonomia;
+    }
+
+    public void setAutonomia(Integer autonomia) {
         try {
-            if (this.vehiculoValidacion.validar(AUTONOMIA_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+            if (this.vehiculoValidacion.validar(AUTONOMIA_VEHICULO_ERRONEA.getRegex(), String.valueOf(autonomia))) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -186,17 +190,13 @@ public class Vehiculo {
         }
     }
 
-    public void setAutonomia(Integer autonomia) {
-        this.autonomia = autonomia;
-    }
-
     public Double getCapacidadCarga() {
         return capacidadCarga;
     }
 
     public void setCapacidadCarga(Double capacidadCarga) {
         try {
-            if (this.vehiculoValidacion.validar(CAPACIDAD_CARGA_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+            if (this.vehiculoValidacion.validar(CAPACIDAD_CARGA_VEHICULO_ERRONEA.getRegex(), String.valueOf(capacidadCarga))) {
                 System.out.println("Tdo bien agonia");
             }
         } catch (Exception e) {
@@ -212,7 +212,7 @@ public class Vehiculo {
 
     public void setAvaluo(Integer avaluo) {
         try {
-            if (this.vehiculoValidacion.validar(AVALUO_VEHICULO_ERRONEO.getRegex(), descripcion)) {
+            if (this.vehiculoValidacion.validar(AVALUO_VEHICULO_ERRONEO.getRegex(), String.valueOf(avaluo))) {
                 System.out.println("Tdo bien agonia");
             }
         } catch (Exception e) {

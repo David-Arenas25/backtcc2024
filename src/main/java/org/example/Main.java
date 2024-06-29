@@ -13,8 +13,8 @@ public class Main {
 
         Scanner lea = new Scanner(System.in);
         System.out.print("Digite el COLOR: ");
-        String color = lea.nextLine();
-        vehiculo.setColor(color);
+        Double color = lea.nextDouble();
+        vehiculo.setKilometraje(color);
 
 
 
