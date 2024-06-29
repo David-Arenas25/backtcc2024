@@ -1,33 +1,23 @@
 package org.example.helpers.validaciones;
-
 import org.example.helpers.generals.RegexValidators;
-import org.example.helpers.mensajes.MensajesVehiculo;
+import org.example.helpers.mensajes.RegexExpresiones;
 
 public class VehiculoValidacion {
-    private RegexValidators regexValidators = new RegexValidators();
+    private RegexValidators regexValidator = new RegexValidators();
 
-
-
-    public boolean validarNumero(String regex, Double attribute) throws Exception {
-        String attributeStr = Double.toString(attribute);
-
-        if (!attributeStr.matches(regex)) {
-            throw new Exception("Formato incorrecto para la cantidad");
-        } else {
-            return true;
+    public boolean validarMarca(String marca)throws Exception{
+        if(!regexValidator.validarRegex(marca, RegexExpresiones.VALIDAR_SOLO_LETRAS_Y_ESPACIOS.getExpresionRegular())){
+           throw new Exception("error en el formato del nombre de la marca");
         }
-    }
-    public boolean validar(String regex,String attribute)throws Exception {
-
-        if(!this.regexValidators.validarRegex(regex,attribute)) {
-            throw new Exception("caracteres incorrectos para la");
-
-
-        }else {
-            return true;
+        if(marca.length()>50){
+            throw new Exception("error en el tamaño de caracteres de la marca");
         }
+        return true;
 
     }
+
+
+
     public boolean validarModelo(String fechaModelo)throws Exception{return true;}
 
 

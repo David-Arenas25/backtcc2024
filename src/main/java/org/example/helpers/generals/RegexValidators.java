@@ -1,5 +1,6 @@
 package org.example.helpers.generals;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexValidators {
@@ -13,15 +14,16 @@ public class RegexValidators {
 
 
         Pattern patron = Pattern.compile(expresionRegular);
-        boolean coincidencia=patron.matcher(atributo).matches();
+        Matcher coincidencia=patron.matcher(atributo);
 
-        if(!coincidencia){
-            throw new Exception("error");
+        if(!coincidencia.matches()){
+            return false;
 
+        }else{
+            return true;
         }
 
 
-        return true;
     }
     public boolean validarRegexNumber(String expresionRegular, Double atributo) throws Exception {
 

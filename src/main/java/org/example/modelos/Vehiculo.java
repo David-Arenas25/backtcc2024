@@ -1,6 +1,8 @@
 package org.example.modelos;
 
+
 import org.example.helpers.mensajes.MensajesVehiculo;
+
 import org.example.helpers.validaciones.VehiculoValidacion;
 
 import java.time.LocalDate;
@@ -9,9 +11,11 @@ import static org.example.helpers.mensajes.MensajesVehiculo.*;
 
 public class Vehiculo {
 
+
     //Inyectando una dependencia de la clase vehiculo validacion
 
     private VehiculoValidacion vehiculoValidacion= new VehiculoValidacion();
+
 
     //id
     private Integer id; //solo numeros positivos
@@ -83,15 +87,11 @@ public class Vehiculo {
     }
 
     public void setMarca(String marca) {
-
-        try {
-            if (this.vehiculoValidacion.validar(MARCA_VEHICULO_ERRONEO.getRegex(), marca)) {
-                System.out.println("Tdo bien agonia");
-            }
-        }
-
-        catch (Exception e){
-            System.out.println(MensajesVehiculo.MARCA_VEHICULO_ERRONEO+e.getMessage());
+        try{
+            this.vehiculoValidacion.validarMarca(marca);
+            System.out.println("todo bien agonia");
+        }catch(Exception error){
+            System.out.println(error.getMessage());
 
         }
     }
@@ -108,7 +108,7 @@ public class Vehiculo {
         return kilometraje;
     }
 
-    public void setKilometraje(Double kilometraje) {
+    /*public void setKilometraje(Double kilometraje) {
         try {
             if (this.vehiculoValidacion.validar(KILOMETRAJE_VEHICULO_ERRONEO.getRegex(), String.valueOf(kilometraje))) {
                 System.out.println("Tdo bien agonia");
@@ -220,4 +220,7 @@ public class Vehiculo {
 
         }
     }
+
+     */
 }
+

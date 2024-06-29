@@ -2,14 +2,13 @@ package org.example.helpers.mensajes;
 
 public enum RegexExpresiones {
 
-    VALIDAR_SOLO_LETRAS_Y_ESPACIOS("^[a-zA-Z ]+$\n")
-    ;
+    VALIDAR_SOLO_LETRAS_Y_ESPACIOS("^[a-zA-Z\\s]*$");
 
     private String expresionRegular;
 
-    RegexExpresiones() {
+    RegexExpresiones(String expresionRegular) {
+        this.expresionRegular = expresionRegular;
     }
-
 
     public String getExpresionRegular() {
         return expresionRegular;
