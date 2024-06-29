@@ -10,7 +10,7 @@ public class RegexValidators {
     public RegexValidators() {
     }
 
-    public boolean validarRegex(String expresionRegular, String atributo) throws Exception {
+    public boolean validarRegex(String atributo,String expresionRegular ) throws Exception {
 
 
         Pattern patron = Pattern.compile(expresionRegular);

@@ -15,6 +15,86 @@ public class VehiculoValidacion {
         return true;
 
     }
+    public boolean validarKilometraje(String kilometraje)throws Exception{
+        if(!regexValidator.validarRegex(kilometraje, RegexExpresiones.SOLO_POSITIVOS_MAX100.getExpresionRegular())){
+            throw new Exception("error en el formato del kilometraje");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+
+    public boolean validarColor(String color)throws Exception{
+        if(!regexValidator.validarRegex(color, RegexExpresiones.SOLO_LETRAS_Y_ESPACIOSMAX20.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+
+    public boolean validarDescripcion(String descripcion)throws Exception{
+        if(!regexValidator.validarRegex(descripcion, RegexExpresiones.MAX100_CARACTERES.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+    public boolean validarTipo(String tipo)throws Exception{
+        if(!regexValidator.validarRegex(tipo, RegexExpresiones.SOLO_LETRAS_SIN_ESPACIOS.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+    public boolean validarAutonomia(Integer autonomia)throws Exception{
+
+        if(!regexValidator.validarRegex(String.valueOf(autonomia), RegexExpresiones.NUMEROS_POSITIVOS_MAX_72.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+    public boolean validarCapacidadCarga(String capacidadCarga)throws Exception{
+        if(!regexValidator.validarRegex(capacidadCarga, RegexExpresiones.NUMEROS_POSITIVOS_MAX_1000.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
+    public boolean validarAvaluo(String avaluo)throws Exception{
+        if(!regexValidator.validarRegex(avaluo, RegexExpresiones.SOLO_POSITIVOS.getExpresionRegular())){
+            throw new Exception("error en el formato del color");
+        }
+        else{
+            return true;
+
+        }
+
+
+    }
 
 
 

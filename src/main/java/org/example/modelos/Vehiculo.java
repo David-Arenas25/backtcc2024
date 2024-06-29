@@ -6,6 +6,7 @@ import org.example.helpers.mensajes.MensajesVehiculo;
 import org.example.helpers.validaciones.VehiculoValidacion;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.example.helpers.mensajes.MensajesVehiculo.*;
 
@@ -24,7 +25,7 @@ public class Vehiculo {
     private String marca; //solo letras y espacios y maximo 50 caracteres sin caracteres especiales
 
     //modelo
-    private LocalDate modelo; //CON EL PROFE
+    private LocalDateTime modelo; //CON EL PROFE
 
     //kilometraje
     private Double kilometraje; //solo positivos y maximo 100.000
@@ -53,18 +54,22 @@ public class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(Integer id, String marca, LocalDate modelo, Double kilometraje, String color, String descripcion, String tipo, Integer autonomia, Double capacidadCarga, Integer avaluo) {
-        this.id = id;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.kilometraje = kilometraje;
-        this.color = color;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
-        this.autonomia = autonomia;
-        this.capacidadCarga = capacidadCarga;
-        this.avaluo = avaluo;
+    public Vehiculo(Integer id, String marca, LocalDateTime modelo, Double kilometraje, String color, String descripcion, String tipo, Integer autonomia, Double capacidadCarga, Integer avaluo) {
+
+        setId(id);
+        setMarca(marca);
+        setModelo(modelo);
+        setKilometraje(kilometraje);
+        setColor(color);
+        setDescripcion(descripcion);
+        setTipo(tipo);
+        setAutonomia(autonomia);
+        setCapacidadCarga(capacidadCarga);
+        setAvaluo(avaluo);
+
     }
+
+
 
     public Integer getId() {
         return id;
@@ -96,11 +101,19 @@ public class Vehiculo {
         }
     }
 
-    public LocalDate getModelo() {
+    public VehiculoValidacion getVehiculoValidacion() {
+        return vehiculoValidacion;
+    }
+
+    public void setVehiculoValidacion(VehiculoValidacion vehiculoValidacion) {
+        this.vehiculoValidacion = vehiculoValidacion;
+    }
+
+    public LocalDateTime getModelo() {
         return modelo;
     }
 
-    public void setModelo(LocalDate modelo) {
+    public void setModelo(LocalDateTime modelo) {
         this.modelo = modelo;
     }
 
@@ -108,9 +121,9 @@ public class Vehiculo {
         return kilometraje;
     }
 
-    /*public void setKilometraje(Double kilometraje) {
+    public void setKilometraje(Double kilometraje) {
         try {
-            if (this.vehiculoValidacion.validar(KILOMETRAJE_VEHICULO_ERRONEO.getRegex(), String.valueOf(kilometraje))) {
+            if (this.vehiculoValidacion.validarKilometraje(String.valueOf(kilometraje))) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -127,7 +140,7 @@ public class Vehiculo {
 
     public void setColor(String color) {
         try {
-            if (this.vehiculoValidacion.validar(COLOR_VEHICULO_ERRONEO.getRegex(), color)) {
+            if (this.vehiculoValidacion.validarColor(color)) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -145,7 +158,7 @@ public class Vehiculo {
 
     public void setDescripcion(String descripcion) {
         try {
-            if (this.vehiculoValidacion.validar(DESCRIPCION_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+            if (this.vehiculoValidacion.validarDescripcion(descripcion)) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -162,13 +175,13 @@ public class Vehiculo {
 
     public void setTipo(String tipo) {
         try {
-            if (this.vehiculoValidacion.validar(TIPO_VEHICULO_ERRONEO.getRegex(), tipo)) {
+            if (this.vehiculoValidacion.validarTipo(tipo)) {
                 System.out.println("Tdo bien agonia");
             }
         }
 
         catch (Exception e){
-            System.out.println(MensajesVehiculo.TIPO_VEHICULO_ERRONEO.getMensajeError());
+            System.out.println(e.getMessage());
 
         }
     }
@@ -179,7 +192,7 @@ public class Vehiculo {
 
     public void setAutonomia(Integer autonomia) {
         try {
-            if (this.vehiculoValidacion.validar(AUTONOMIA_VEHICULO_ERRONEA.getRegex(), String.valueOf(autonomia))) {
+            if (this.vehiculoValidacion.validarAutonomia(autonomia)) {
                 System.out.println("Tdo bien agonia");
             }
         }
@@ -196,11 +209,11 @@ public class Vehiculo {
 
     public void setCapacidadCarga(Double capacidadCarga) {
         try {
-            if (this.vehiculoValidacion.validar(CAPACIDAD_CARGA_VEHICULO_ERRONEA.getRegex(), String.valueOf(capacidadCarga))) {
+            if (this.vehiculoValidacion.validarCapacidadCarga(String.valueOf(capacidadCarga))) {
                 System.out.println("Tdo bien agonia");
             }
         } catch (Exception e) {
-            System.out.println(MensajesVehiculo.CAPACIDAD_CARGA_VEHICULO_ERRONEA.getMensajeError());
+            System.out.println(MensajesVehiculo.CAPACIDAD_CARGA_VEHICULO_ERRONEA.getMensajeError()+"NO JODAS");
 
         }
 
@@ -212,7 +225,7 @@ public class Vehiculo {
 
     public void setAvaluo(Integer avaluo) {
         try {
-            if (this.vehiculoValidacion.validar(AVALUO_VEHICULO_ERRONEO.getRegex(), String.valueOf(avaluo))) {
+            if (this.vehiculoValidacion.validarAvaluo(String.valueOf(avaluo))) {
                 System.out.println("Tdo bien agonia");
             }
         } catch (Exception e) {
@@ -221,6 +234,6 @@ public class Vehiculo {
         }
     }
 
-     */
+
 }
 
