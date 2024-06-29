@@ -5,8 +5,7 @@ import org.example.helpers.validaciones.VehiculoValidacion;
 
 import java.time.LocalDate;
 
-import static org.example.helpers.mensajes.MensajesVehiculo.ID_VEHICULO_ERRONEO;
-import static org.example.helpers.mensajes.MensajesVehiculo.MARCA_VEHICULO_ERRONEO;
+import static org.example.helpers.mensajes.MensajesVehiculo.*;
 
 public class Vehiculo {
 
@@ -68,7 +67,15 @@ public class Vehiculo {
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        try {
+            if (id > 0) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+        catch (Exception e){
+            System.out.println(ID_VEHICULO_ERRONEO.getMensajeError()+e.getMessage());
+
+        }
     }
 
     public String getMarca() {
@@ -102,7 +109,16 @@ public class Vehiculo {
     }
 
     public void setKilometraje(Double kilometraje) {
-        this.kilometraje = kilometraje;
+        try {
+            if (this.vehiculoValidacion.validarNumero(KILOMETRAJE_VEHICULO_ERRONEO.getRegex(), kilometraje)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.KILOMETRAJE_VEHICULO_ERRONEO.getMensajeError());
+
+        }
     }
 
     public String getColor() {
@@ -110,7 +126,17 @@ public class Vehiculo {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        try {
+            if (this.vehiculoValidacion.validar(COLOR_VEHICULO_ERRONEO.getRegex(), color)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.COLOR_VEHICULO_ERRONEO.getMensajeError());
+
+        }
+
     }
 
     public String getDescripcion() {
@@ -118,7 +144,16 @@ public class Vehiculo {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        try {
+            if (this.vehiculoValidacion.validar(DESCRIPCION_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.DESCRIPCION_VEHICULO_ERRONEA.getMensajeError());
+
+        }
     }
 
     public String getTipo() {
@@ -126,11 +161,29 @@ public class Vehiculo {
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        try {
+            if (this.vehiculoValidacion.validar(TIPO_VEHICULO_ERRONEO.getRegex(), descripcion)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.TIPO_VEHICULO_ERRONEO.getMensajeError());
+
+        }
     }
 
     public Integer getAutonomia() {
-        return autonomia;
+        try {
+            if (this.vehiculoValidacion.validar(AUTONOMIA_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+                System.out.println("Tdo bien agonia");
+            }
+        }
+
+        catch (Exception e){
+            System.out.println(MensajesVehiculo.AUTONOMIA_VEHICULO_ERRONEA.getMensajeError());
+
+        }
     }
 
     public void setAutonomia(Integer autonomia) {
@@ -142,7 +195,15 @@ public class Vehiculo {
     }
 
     public void setCapacidadCarga(Double capacidadCarga) {
-        this.capacidadCarga = capacidadCarga;
+        try {
+            if (this.vehiculoValidacion.validar(CAPACIDAD_CARGA_VEHICULO_ERRONEA.getRegex(), descripcion)) {
+                System.out.println("Tdo bien agonia");
+            }
+        } catch (Exception e) {
+            System.out.println(MensajesVehiculo.CAPACIDAD_CARGA_VEHICULO_ERRONEA.getMensajeError());
+
+        }
+
     }
 
     public Integer getAvaluo() {
@@ -150,6 +211,13 @@ public class Vehiculo {
     }
 
     public void setAvaluo(Integer avaluo) {
-        this.avaluo = avaluo;
+        try {
+            if (this.vehiculoValidacion.validar(AVALUO_VEHICULO_ERRONEO.getRegex(), descripcion)) {
+                System.out.println("Tdo bien agonia");
+            }
+        } catch (Exception e) {
+            System.out.println(MensajesVehiculo.AVALUO_VEHICULO_ERRONEO.getMensajeError());
+
+        }
     }
 }

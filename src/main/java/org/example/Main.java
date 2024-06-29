@@ -12,8 +12,9 @@ public class Main {
         Vehiculo vehiculo = new Vehiculo();
 
         Scanner lea = new Scanner(System.in);
-        System.out.print("Digite la marca: ");
-        vehiculo.setMarca(lea.nextLine());
+        System.out.print("Digite el COLOR: ");
+        String color = lea.nextLine();
+        vehiculo.setColor(color);
 
 
 

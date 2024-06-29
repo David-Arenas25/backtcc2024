@@ -3,37 +3,29 @@ package org.example.helpers.validaciones;
 import org.example.helpers.generals.RegexValidators;
 import org.example.helpers.mensajes.MensajesVehiculo;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class VehiculoValidacion {
     private RegexValidators regexValidators = new RegexValidators();
 
 
 
-    public boolean validarId(Integer id)throws Exception{
+    public boolean validarNumero(String regex, Double attribute) throws Exception {
+        String attributeStr = Double.toString(attribute);
 
-
-
-        if(id<0){
-            throw new Exception(MensajesVehiculo.ID_VEHICULO_ERRONEO.getMensajeError());
+        if (!attributeStr.matches(regex)) {
+            throw new Exception("Formato incorrecto para la cantidad");
+        } else {
+            return true;
         }
-
-        return true;
     }
     public boolean validar(String regex,String attribute)throws Exception {
 
-        if(!this.regexValidators.validarRegex(regex,attribute)){
+        if(!this.regexValidators.validarRegex(regex,attribute)) {
             throw new Exception("caracteres incorrectos para la");
+
+
+        }else {
+            return true;
         }
-        if(attribute.length()>50){
-            throw  new Exception("Excedió el número de caracteres");
-
-
-        }
-        return true;
-
-
 
     }
     public boolean validarModelo(String fechaModelo)throws Exception{return true;}
