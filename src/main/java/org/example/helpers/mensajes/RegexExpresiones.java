@@ -12,7 +12,8 @@ public enum RegexExpresiones {
     NUMEROS_POSITIVOS_MAX_72("^(?!0)\\d{1,72}$"),
     NUMEROS_POSITIVOS_MAX_1000("^(?:1000(?:\\.0+)?|[0-9]{1,3}(?:\\.[0-9]+)?)$"
     ),
-    SOLO_POSITIVOS("^[1-9]\\d*$");
+    SOLO_POSITIVOS("^[1-9]\\d*$"),
+    FORMATO_FECHA_MM_YY("^(0[1-9]|1[0-2])/\\d{4}$");
 
 
     private String expresionRegular;

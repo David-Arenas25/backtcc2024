@@ -25,20 +25,6 @@ public class RegexValidators {
 
 
     }
-    public boolean validarRegexNumber(String expresionRegular, Double atributo) throws Exception {
-
-        String atributoStr = String.valueOf(atributo);
-        Pattern patron = Pattern.compile(expresionRegular);
-        boolean coincidencia=patron.matcher(atributoStr).matches();
-
-        if(!coincidencia){
-            throw new Exception("error");
-
-        }
-
-
-        return true;
-    }
 
 
 

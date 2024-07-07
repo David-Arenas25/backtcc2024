@@ -5,8 +5,8 @@ import org.example.helpers.mensajes.MensajesVehiculo;
 
 import org.example.helpers.validaciones.VehiculoValidacion;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+
 
 import static org.example.helpers.mensajes.MensajesVehiculo.*;
 
@@ -15,7 +15,7 @@ public class Vehiculo {
 
     //Inyectando una dependencia de la clase vehiculo validacion
 
-    private VehiculoValidacion vehiculoValidacion= new VehiculoValidacion();
+    private VehiculoValidacion vehiculoValidacion = new VehiculoValidacion();
 
 
     //id
@@ -25,7 +25,7 @@ public class Vehiculo {
     private String marca; //solo letras y espacios y maximo 50 caracteres sin caracteres especiales
 
     //modelo
-    private LocalDateTime modelo; //CON EL PROFE
+    private String modelo; //CON EL PROFE
 
     //kilometraje
     private Double kilometraje; //solo positivos y maximo 100.000
@@ -54,7 +54,7 @@ public class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(Integer id, String marca, LocalDateTime modelo, Double kilometraje, String color, String descripcion, String tipo, Integer autonomia, Double capacidadCarga, Integer avaluo) {
+    public Vehiculo(Integer id, String marca, String modelo, Double kilometraje, String color, String descripcion, String tipo, Integer autonomia, Double capacidadCarga, Integer avaluo) {
 
         setId(id);
         setMarca(marca);
@@ -70,33 +70,32 @@ public class Vehiculo {
     }
 
 
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
-        try {
-            if (id > 0) {
-                System.out.println("Tdo bien agonia");
-            }
-        }
-        catch (Exception e){
-            System.out.println(ID_VEHICULO_ERRONEO.getMensajeError()+e.getMessage());
+        if (id > 0) {
+            System.out.println("Tdo bien agonia");
+        } else {
+
+            System.out.println(ID_VEHICULO_ERRONEO.getMensajeError());
 
         }
     }
+
+
 
     public String getMarca() {
         return marca;
     }
 
     public void setMarca(String marca) {
-        try{
+        try {
             this.vehiculoValidacion.validarMarca(marca);
             System.out.println("todo bien agonia");
-        }catch(Exception error){
-            System.out.println(error.getMessage());
+        } catch (Exception error) {
+            System.out.println(MARCA_VEHICULO_ERRONEO.getMensajeError());
 
         }
     }
@@ -109,12 +108,19 @@ public class Vehiculo {
         this.vehiculoValidacion = vehiculoValidacion;
     }
 
-    public LocalDateTime getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(LocalDateTime modelo) {
-        this.modelo = modelo;
+    public void setModelo(String modelo) {
+        try {
+            if (this.vehiculoValidacion.validarModelo(modelo)) {
+                System.out.println("Tdo bien agonia");
+            }
+        } catch (Exception e) {
+            System.out.println(FECHA_VEHICULO_INCORRECTA.getMensajeError());
+
+        }
     }
 
     public Double getKilometraje() {
@@ -126,9 +132,7 @@ public class Vehiculo {
             if (this.vehiculoValidacion.validarKilometraje(String.valueOf(kilometraje))) {
                 System.out.println("Tdo bien agonia");
             }
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(MensajesVehiculo.KILOMETRAJE_VEHICULO_ERRONEO.getMensajeError());
 
         }
@@ -143,9 +147,7 @@ public class Vehiculo {
             if (this.vehiculoValidacion.validarColor(color)) {
                 System.out.println("Tdo bien agonia");
             }
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(MensajesVehiculo.COLOR_VEHICULO_ERRONEO.getMensajeError());
 
         }
@@ -161,9 +163,7 @@ public class Vehiculo {
             if (this.vehiculoValidacion.validarDescripcion(descripcion)) {
                 System.out.println("Tdo bien agonia");
             }
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(MensajesVehiculo.DESCRIPCION_VEHICULO_ERRONEA.getMensajeError());
 
         }
@@ -178,10 +178,8 @@ public class Vehiculo {
             if (this.vehiculoValidacion.validarTipo(tipo)) {
                 System.out.println("Tdo bien agonia");
             }
-        }
-
-        catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(SOLO_LETRAS_Y_ESPACIOS.getMensajeError());
 
         }
     }
@@ -195,9 +193,7 @@ public class Vehiculo {
             if (this.vehiculoValidacion.validarAutonomia(autonomia)) {
                 System.out.println("Tdo bien agonia");
             }
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(MensajesVehiculo.AUTONOMIA_VEHICULO_ERRONEA.getMensajeError());
 
         }
@@ -213,7 +209,7 @@ public class Vehiculo {
                 System.out.println("Tdo bien agonia");
             }
         } catch (Exception e) {
-            System.out.println(MensajesVehiculo.CAPACIDAD_CARGA_VEHICULO_ERRONEA.getMensajeError()+"NO JODAS");
+            System.out.println(MensajesVehiculo.CAPACIDAD_CARGA_VEHICULO_ERRONEA.getMensajeError());
 
         }
 
@@ -223,17 +219,17 @@ public class Vehiculo {
         return avaluo;
     }
 
-    public void setAvaluo(Integer avaluo) {
-        try {
-            if (this.vehiculoValidacion.validarAvaluo(String.valueOf(avaluo))) {
-                System.out.println("Tdo bien agonia");
-            }
-        } catch (Exception e) {
-            System.out.println(MensajesVehiculo.AVALUO_VEHICULO_ERRONEO.getMensajeError());
+    public void setAvaluo(Integer avaluo){
+                try {
+                    if (this.vehiculoValidacion.validarAvaluo(String.valueOf(avaluo))) {
+                        System.out.println("Tdo bien agonia");
+                    }
+                } catch (Exception e) {
+                    System.out.println(MensajesVehiculo.AVALUO_VEHICULO_ERRONEO.getMensajeError());
 
-        }
-    }
+                }
+            }}
 
 
-}
+
 
