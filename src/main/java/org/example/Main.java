@@ -12,8 +12,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Vehiculo vehiculo = new Vehiculo(-1, "Raider","06/2024" ,20.0,"negra","motocicleta","mela", 55, 1.0, 56000);
-        Mercancia mercancia = new Mercancia(-1,-1,"carne",-5,"carne roja",-5000,"calle 80","calle 90");
+        Vehiculo vehiculo = new Vehiculo(-1, "Raider$","05/06/2024" ,-20.0,"%negra","¡motocicleta","¡mela", -55, -1.0, -56000);
+        Mercancia mercancia = new Mercancia(-1,-1,"%carne",-5,"¡carne roja",-5000,"$$calle 80","$$calle 90");
         /*FechasJava fechasJava = new FechasJava();
 
 
