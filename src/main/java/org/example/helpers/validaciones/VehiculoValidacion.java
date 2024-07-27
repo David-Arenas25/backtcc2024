@@ -115,7 +115,13 @@ public class VehiculoValidacion {
     }
 
 
+    public boolean validarId(Integer idPrueba) throws  Exception {
+        if(!(idPrueba >0)){
+            throw new Exception("Error");
 
 
-
+        }else{
+            return true;
+        }
+    }
 }
